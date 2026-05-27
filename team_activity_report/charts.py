@@ -13,14 +13,14 @@ import io
 
 import matplotlib
 
-matplotlib.use("Agg")  # noqa: E402
-import matplotlib.pyplot as plt  # noqa: E402
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 
 from team_activity_report.types import HourlyCount
 
-_BG = "#0f172a"        # slate-950 — matches portfolio theme
-_FG = "#e2e8f0"        # slate-200
-_BAR = "#10b981"       # emerald-500
+_BG = "#0f172a"  # slate-950 — matches portfolio theme
+_FG = "#e2e8f0"  # slate-200
+_BAR = "#10b981"  # emerald-500
 
 
 def hourly_throughput_chart(hourly: list[HourlyCount]) -> str:

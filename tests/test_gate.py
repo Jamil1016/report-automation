@@ -1,7 +1,5 @@
 from datetime import date
 
-import pytest
-
 from team_activity_report.gate import is_holiday, is_weekend, should_run
 
 

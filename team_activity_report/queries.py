@@ -126,9 +126,7 @@ async def throughput_by_hour(pool: asyncpg.Pool, target_date: date) -> list[Hour
     return [HourlyCount(hour=h, count=by_hour.get(h, 0)) for h in range(24)]
 
 
-async def active_devs(
-    pool: asyncpg.Pool, target_date: date, top_n: int = 5
-) -> list[DevCount]:
+async def active_devs(pool: asyncpg.Pool, target_date: date, top_n: int = 5) -> list[DevCount]:
     start, end = _day_bounds(target_date)
     async with pool.acquire() as conn:
         rows = await conn.fetch(

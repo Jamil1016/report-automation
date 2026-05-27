@@ -9,17 +9,17 @@ from datetime import date
 # reflects the actual calendar holiday, not the observed shift.
 _HOLIDAYS_2026: frozenset[date] = frozenset(
     {
-        date(2026, 1, 1),   # New Year's Day
+        date(2026, 1, 1),  # New Year's Day
         date(2026, 1, 19),  # Martin Luther King Jr. Day
         date(2026, 2, 16),  # Presidents Day
         date(2026, 5, 25),  # Memorial Day
         date(2026, 6, 19),  # Juneteenth
-        date(2026, 7, 4),   # Independence Day (Saturday in 2026; observed Fri 7/3)
-        date(2026, 9, 7),   # Labor Day
-        date(2026, 10, 12), # Columbus Day
-        date(2026, 11, 11), # Veterans Day
-        date(2026, 11, 26), # Thanksgiving
-        date(2026, 12, 25), # Christmas
+        date(2026, 7, 4),  # Independence Day (Saturday in 2026; observed Fri 7/3)
+        date(2026, 9, 7),  # Labor Day
+        date(2026, 10, 12),  # Columbus Day
+        date(2026, 11, 11),  # Veterans Day
+        date(2026, 11, 26),  # Thanksgiving
+        date(2026, 12, 25),  # Christmas
     }
 )
 

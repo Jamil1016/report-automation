@@ -1,12 +1,12 @@
-from datetime import UTC, date, datetime
+from datetime import UTC, datetime
 
 import pytest
 
 from team_activity_report.seed import (
-    EVENT_KINDS,
-    REPOS,
     ACTORS,
     ANCHOR,
+    EVENT_KINDS,
+    REPOS,
     generate_events,
     seed_events,
 )
@@ -56,7 +56,7 @@ class TestGenerateEvents:
 
     def test_anchor_is_a_monday(self) -> None:
         """The anchor date is fixed at 2026-05-04 (Monday)."""
-        assert ANCHOR == datetime(2026, 5, 4, 9, 0, tzinfo=UTC)
+        assert datetime(2026, 5, 4, 9, 0, tzinfo=UTC) == ANCHOR
         assert ANCHOR.weekday() == 0  # Monday
 
 

@@ -51,7 +51,11 @@ class TestGenerate:
         assert first_hash == second_hash
 
     @pytest.mark.asyncio
-    async def test_different_dates_produce_different_output(self, seeded_pool, tmp_path: Path) -> None:
+    async def test_different_dates_produce_different_output(
+        self, seeded_pool, tmp_path: Path
+    ) -> None:
         a = await generate(seeded_pool, date(2026, 5, 5), tmp_path)
         b = await generate(seeded_pool, date(2026, 5, 6), tmp_path)
-        assert hashlib.sha256(a.read_bytes()).hexdigest() != hashlib.sha256(b.read_bytes()).hexdigest()
+        assert (
+            hashlib.sha256(a.read_bytes()).hexdigest() != hashlib.sha256(b.read_bytes()).hexdigest()
+        )

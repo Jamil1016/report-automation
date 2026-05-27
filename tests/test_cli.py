@@ -1,4 +1,3 @@
-from datetime import date
 from pathlib import Path
 from unittest.mock import AsyncMock, patch
 
@@ -52,18 +51,24 @@ class TestCLISmoke:
     @pytest.mark.asyncio
     async def test_run_force_overrides_weekend(self, tmp_path: Path) -> None:
         # Mock generate so we don't need a real DB
-        with patch("team_activity_report.cli.create_pool", new_callable=AsyncMock) as pool_mock, \
-             patch("team_activity_report.cli.generate", new_callable=AsyncMock) as gen_mock:
+        with (
+            patch("team_activity_report.cli.create_pool", new_callable=AsyncMock) as pool_mock,
+            patch("team_activity_report.cli.generate", new_callable=AsyncMock) as gen_mock,
+        ):
             pool_mock.return_value.close = AsyncMock()
             gen_mock.return_value = tmp_path / "2026-05-23-report.html"
-            exit_code = await main(["run", "--date", "2026-05-23", "--force", "--out", str(tmp_path)])
+            exit_code = await main(
+                ["run", "--date", "2026-05-23", "--force", "--out", str(tmp_path)]
+            )
         assert exit_code == 0
         gen_mock.assert_called_once()
 
     @pytest.mark.asyncio
     async def test_init_db_calls_init_schema(self) -> None:
-        with patch("team_activity_report.cli.create_pool", new_callable=AsyncMock) as pool_mock, \
-             patch("team_activity_report.cli.init_schema", new_callable=AsyncMock) as init_mock:
+        with (
+            patch("team_activity_report.cli.create_pool", new_callable=AsyncMock) as pool_mock,
+            patch("team_activity_report.cli.init_schema", new_callable=AsyncMock) as init_mock,
+        ):
             pool_mock.return_value.close = AsyncMock()
             exit_code = await main(["init-db"])
         assert exit_code == 0

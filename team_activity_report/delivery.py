@@ -13,9 +13,7 @@ from email.message import EmailMessage
 
 def _smtp_configured() -> bool:
     return bool(
-        os.environ.get("SMTP_HOST")
-        and os.environ.get("SMTP_USER")
-        and os.environ.get("SMTP_PASS")
+        os.environ.get("SMTP_HOST") and os.environ.get("SMTP_USER") and os.environ.get("SMTP_PASS")
     )
 
 
